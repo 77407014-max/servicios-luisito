@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luisito Chamba - Servicios Rápidos y Confiables</title>
+    <!-- FontAwesome para Íconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Estilos Generales */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f4f7f6;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header / Identidad */
+        header {
+            background: linear-gradient(135deg, #1b365d, #2a5298);
+            color: white;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            color: #25d366;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #25d366;
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('image_e378fc.png') center/cover;
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 25px auto;
+        }
+
+        /* Mensaje del Emprendedor */
+        .about-section {
+            max-width: 900px;
+            margin: 30px auto -20px auto;
+            padding: 0 5%;
+            position: relative;
+            z-index: 11;
+        }
+
+        .about-card {
+            background: white;
+            border-left: 5px solid #25d366;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .about-icon {
+            font-size: 2.5rem;
+            color: #1b365d;
+            flex-shrink: 0;
+        }
+
+        .about-text p {
+            font-size: 1.05rem;
+            color: #444;
+            line-height: 1.6;
+        }
+
+        /* Cotizador */
+        .calculator-section {
+            padding: 40px 5%;
+            max-width: 900px;
+            margin: 40px auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 10;
+        }
+
+        .calculator-title {
+            text-align: center;
+            font-size: 1.8rem;
+            color: #1b365d;
+            margin-bottom: 25px;
+        }
+
+        .calc-group {
+            background: #f9fbfd;
+            border: 1px solid #e1e8ed;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .calc-group h3 {
+            color: #2a5298;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.2rem;
+        }
+
+        .experience-note {
+            background: #eef7f2;
+            border: 1px dashed #25d366;
+            border-radius: 8px;
+            padding: 12px 15px;
+            margin-bottom: 15px;
+            font-size: 0.92rem;
+            color: #2d5a3f;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .experience-note i {
+            color: #25d366;
+            font-size: 1.1rem;
+            margin-top: 3px;
+        }
+
+        .options-row {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        label {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: white;
+            padding: 10px 15px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            transition: all 0.2s;
+            font-size: 0.95rem;
+        }
+
+        label:hover {
+            border-color: #2a5298;
+            background: #f0f4f9;
+        }
+
+        input[type="number"], select {
+            padding: 8px 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            outline: none;
+            font-size: 1rem;
+        }
+
+        .total-box {
+            background: #1b365d;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 25px;
+        }
+
+        .total-box h3 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .total-price {
+            font-size: 2.2rem;
+            color: #25d366;
+            font-weight: bold;
+        }
+
+        .note-mandado {
+            font-size: 0.85rem;
+            color: #a0aec0;
+            margin-top: 5px;
+        }
+
+        /* Galería */
+        .gallery-section {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 5%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: #1b365d;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+
+        .gallery-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .gallery-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .gallery-card-body {
+            padding: 15px;
+            text-align: center;
+        }
+
+        .gallery-card-body h4 {
+            color: #1b365d;
+            margin-bottom: 5px;
+        }
+
+        /* Datos e Información */
+        .info-section {
+            background: #eef2f5;
+            padding: 60px 5%;
+        }
+
+        .info-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .info-box {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+
+        .info-box h3 {
+            color: #1b365d;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .testimonial {
+            font-style: italic;
+            color: #555;
+            border-left: 4px solid #25d366;
+            padding-left: 15px;
+            margin-top: 15px;
+        }
+
+        .stars {
+            color: #f39c12;
+            margin-top: 5px;
+        }
+
+        /* Botón de WhatsApp */
+        .cta-container {
+            text-align: center;
+            padding: 50px 20px;
+            background: #ffffff;
+        }
+
+        .btn-whatsapp {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background-color: #25d366;
+            color: white;
+            font-size: 1.3rem;
+            font-weight: bold;
+            padding: 16px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
+            transition: transform 0.2s, background-color 0.2s;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #1eb854;
+            transform: scale(1.05);
+        }
+
+        footer {
+            background: #1b365d;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .options-row {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .about-card {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. IDENTIDAD VISUAL -->
+    <header>
+        <div class="logo">
+            <i class="fa-solid fa-handshake-angle"></i> Luisito Chamba
+        </div>
+        <nav>
+            <a href="#cotizador">Cotizar</a>
+            <a href="#galeria">Trabajos Reales</a>
+            <a href="#horarios">Horarios</a>
+        </nav>
+    </header>
+
+    <!-- 2. PROPUESTA DE VALOR -->
+    <section class="hero">
+        <h1>Soluciones Rápidas y Confiables</h1>
+        <p>Trabajos garantizados y atención responsable en el cuidado de tus mascotas, autos y mandados diarios.</p>
+    </section>
+
+    <!-- SECCIÓN CON EL MENSAJE DE LUIS -->
+    <section class="about-section">
+        <div class="about-card">
+            <div class="about-icon">
+                <i class="fa-solid fa-user-tie"></i>
+            </div>
+            <div class="about-text">
+                <p>¡Hola! Soy Luis. Como emprendedor, mi meta es seguir creciendo paso a paso junto a ustedes. Para premiar su lealtad, los clientes frecuentes contarán con descuentos increíbles. La confianza y la experiencia respaldan mi trabajo, ¡espero que disfruten de mi servicio!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- COTIZADOR INTERACTIVO -->
+    <section class="calculator-section" id="cotizador">
+        <h2 class="calculator-title"><i class="fa-solid fa-calculator"></i> Cotiza tus Servicios</h2>
+        
+        <!-- Lavado de Carros -->
+        <div class="calc-group">
+            <h3><i class="fa-solid fa-car-wash"></i> 1. Lavado de Carro</h3>
+            
+            <div class="experience-note">
+                <i class="fa-solid fa-sparkles"></i>
+                <div>¡El cuidado de tu auto en manos de un verdadero apasionado! Me encantan los autos y me tomo muy en serio su limpieza. Me aseguro de cuidar cada detalle para dejártelo impecable, como nuevo.</div>
+            </div>
+
+            <div class="options-row">
+                <label>
+                    <input type="radio" name="carro" value="0" checked onchange="calcularTotal()"> Ninguno
+                </label>
+                <label>
+                    <input type="radio" name="carro" value="13" onchange="calcularTotal()"> Solo afuera (S/ 13)
+                </label>
+                <label>
+                    <input type="radio" name="carro" value="20" onchange="calcularTotal()"> Completo: Adentro y Afuera (S/ 20)
+                </label>
+            </div>
+        </div>
+
+        <!-- Paseo de Perros -->
+        <div class="calc-group">
+            <h3><i class="fa-solid fa-dog"></i> 2. Paseo de Perros (S/ 1 por perro)</h3>
+            
+            <div class="experience-note">
+                <i class="fa-solid fa-heart"></i>
+                <div>Cuento con amplia experiencia en el cuidado de mascotas. A lo largo de los años he tenido perros, gatos y conejos, lo que me ha permitido desarrollar una gran empatía y conectar de forma muy especial con perros y gatos. ¡Tus mascotas estarán en las mejores manos!</div>
+            </div>
+
+            <div class="options-row">
+                <label for="numPerros">Cantidad de perros:</label>
+                <input type="number" id="numPerros" min="0" value="0" style="width: 80px;" oninput="calcularTotal()">
+            </div>
+        </div>
+
+        <!-- Mandados y Encargos -->
+        <div class="calc-group">
+            <h3><i class="fa-solid fa-person-biking"></i> 3. Mandados y Encargos</h3>
+
+            <div class="experience-note">
+                <i class="fa-solid fa-shield-halved"></i>
+                <div>Si necesitas realizar encargos o mandados, puedes contar conmigo. Soy una persona sumamente confiable, puntual y cuidadosa con todo lo que me encomiendan. ¡Haz tu pedido con total tranquilidad!</div>
+            </div>
+
+            <div class="options-row">
+                <label for="tipoMandado">Tipo o magnitud del mandado:</label>
+                <select id="tipoMandado" onchange="calcularTotal()">
+                    <option value="ninguno">Ningún mandado</option>
+                    <option value="Pequeño/Ligero (ej. Documentos, farmacia)">Pequeño / Ligero (ej. Documentos, farmacia)</option>
+                    <option value="Mediano (ej. Compras del mercado)">Mediano (ej. Compras del mercado)</option>
+                    <option value="Grande/Pesado/Distancia larga">Grande / Pesado / Distancia larga</option>
+                </select>
+            </div>
+            <p style="margin-top: 10px; font-size: 0.85rem; color: #666;">
+                * <em>El precio de los mandados dependerá del peso y la magnitud (a coordinar por chat).</em>
+            </p>
+        </div>
+
+        <!-- Mostrar Total -->
+        <div class="total-box">
+            <h3>TOTAL ESTIMADO:</h3>
+            <div class="total-price" id="totalDisplay">S/ 0</div>
+            <div class="note-mandado" id="mandadoNote" style="display:none;">
+                + Precio del mandado a cotizar en el chat
+            </div>
+        </div>
+    </section>
+
+    <!-- GALERÍA DE TRABAJOS REALES -->
+    <section class="gallery-section" id="galeria">
+        <h2 class="section-title"><i class="fa-solid fa-camera"></i> Mis Trabajos en Acción</h2>
+        <div class="gallery-grid">
+            
+            <div class="gallery-card">
+                <img src="image_e37c07.png" alt="Paseo de perros responsable">
+                <div class="gallery-card-body">
+                    <h4>Paseo de Perros</h4>
+                    <p style="font-size:0.9rem; color:#666;">Cuento con amplia experiencia en el cuidado de mascotas. A lo largo de los años he tenido perros, gatos y conejos, lo que me ha permitido desarrollar una gran empatía y conectar de forma muy especial con perros y gatos. ¡Tus mascotas estarán en las mejores manos!</p>
+                </div>
+            </div>
+
+            <div class="gallery-card">
+                <img src="image_e378fc.png" alt="Lavado de camioneta impecable">
+                <div class="gallery-card-body">
+                    <h4>Lavado Profesional de Autos</h4>
+                    <p style="font-size:0.9rem; color:#666;">¡El cuidado de tu auto en manos de un verdadero apasionado! Me encantan los autos y me tomo muy en serio su limpieza. Me aseguro de cuidar cada detalle para dejártelo impecable, como nuevo.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 4. DATOS DUROS Y TESTIMONIOS -->
+    <section class="info-section">
+        <div class="info-container">
+            
+            <div class="info-box" id="horarios">
+                <h3><i class="fa-solid fa-clock"></i> Horarios de Atención</h3>
+                <p><strong>Lunes a Sábado:</strong> 8:00 a.m. - 7:00 p.m.</p>
+                <p><strong>Domingos:</strong> 9:00 a.m. - 2:00 p.m.</p>
+                <br>
+                <h3><i class="fa-solid fa-location-dot"></i> Cobertura</h3>
+                <p>Servicios a domicilio en toda la zona local.</p>
+            </div>
+
+            <div class="info-box" id="testimonios">
+                <h3><i class="fa-solid fa-comments"></i> Opiniones de Clientes</h3>
+                <div class="testimonial">
+                    <p>"Excelente servicio. La camioneta quedó super limpia por dentro y fuera."</p>
+                    <div class="stars">★★★★★</div>
+                    <small>- Carlos M.</small>
+                </div>
+                <div class="testimonial">
+                    <p>"Super paciente con mis perritos en cada paseo. Totalmente recomendado."</p>
+                    <div class="stars">★★★★★</div>
+                    <small>- Ana G.</small>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- BOTÓN DE WHATSAPP DINÁMICO -->
+    <section class="cta-container">
+        <h2>¿Listo para agendar?</h2>
+        <p style="margin-bottom: 10px; color: #666;">Haz clic abajo para enviar tu pedido con el resumen de tu cotización.</p>
+        <p style="margin-bottom: 25px; font-weight: bold; color: #1b365d;">WhatsApp de Pedidos: 980 400 816</p>
+        
+        <button type="button" class="btn-whatsapp" onclick="enviarWhatsApp()">
+            <i class="fa-brands fa-whatsapp"></i> SOLICITAR POR WHATSAPP
+        </button>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Luisito Chamba - Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- LÓGICA DE INTERACCIÓN Y CÁLCULOS -->
+    <script>
+        const TELEFONO_WHATSAPP = "51980400816"; 
+
+        function calcularTotal() {
+            const opcionCarro = document.querySelector('input[name="carro"]:checked').value;
+            const precioCarro = parseInt(opcionCarro);
+
+            const numPerrosInput = document.getElementById('numPerros').value;
+            const cantidadPerros = Math.max(0, parseInt(numPerrosInput) || 0);
+            const precioPerros = cantidadPerros * 1;
+
+            const mandadoSeleccionado = document.getElementById('tipoMandado').value;
+            const tieneMandado = mandadoSeleccionado !== "ninguno";
+
+            const total = precioCarro + precioPerros;
+
+            document.getElementById('totalDisplay').innerText = `S/ ${total}`;
+
+            const mandadoNote = document.getElementById('mandadoNote');
+            mandadoNote.style.display = tieneMandado ? "block" : "none";
+
+            return {
+                precioCarro,
+                cantidadPerros,
+                mandadoSeleccionado,
+                tieneMandado,
+                total
+            };
+        }
+
+        function enviarWhatsApp() {
+            const datos = calcularTotal();
+
+            if (datos.total === 0 && !datos.tieneMandado) {
+                alert("Por favor selecciona al menos un servicio en el cotizador antes de enviar tu mensaje.");
+                return;
+            }
+
+            let mensaje = "Hola Luisito, quisiera consultar por los siguientes servicios:\n\n";
+
+            if (datos.precioCarro === 13) {
+                mensaje += "• Lavado de Carro (Solo afuera): S/ 13\n";
+            } else if (datos.precioCarro === 20) {
+                mensaje += "• Lavado de Carro (Completo): S/ 20\n";
+            }
+
+            if (datos.cantidadPerros > 0) {
+                mensaje += `• Paseo de Perros (${datos.cantidadPerros} perro/s): S/ ${datos.cantidadPerros}\n`;
+            }
+
+            if (datos.tieneMandado) {
+                mensaje += `• Mandado: ${datos.mandadoSeleccionado} (A cotizar según peso/magnitud)\n`;
+            }
+
+            mensaje += `\n*TOTAL ESTIMADO (Servicios fijos): S/ ${datos.total}*\n`;
+            mensaje += "\n¿Tienes disponibilidad hoy?";
+
+            const url = `https://wa.me/${TELEFONO_WHATSAPP}?text=${encodeURIComponent(mensaje)}`;
+            window.open(url, '_blank');
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            calcularTotal();
+        });
+    </script>
+</body>
+</html>
